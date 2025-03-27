@@ -1,7 +1,7 @@
 <?php
 require_once 'app/controllers/PeopleController.php';
 
-// Lấy URL từ query string
+// Lấy URL từ query string (cho GET requests)
 $url = $_GET['url'] ?? 'People';
 $urlParts = explode('/', $url);
 
@@ -18,18 +18,28 @@ if (!class_exists($controllerName)) {
 
 $controller = new $controllerName();
 
-// Gọi phương thức với tham số (nếu có)
-if ($param) {
+// Xử lý request
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Xử lý POST request (thêm, sửa)
     if (method_exists($controller, $method)) {
-        $controller->$method($param);
+        $controller->$method($param); // Gọi phương thức với tham số (nếu có)
     } else {
         echo "Phương thức không tồn tại.";
     }
 } else {
-    if (method_exists($controller, $method)) {
-        $controller->$method();
+    // Xử lý GET request (hiển thị trang)
+    if ($param) {
+        if (method_exists($controller, $method)) {
+            $controller->$method($param); // Gọi phương thức với tham số (nếu có)
+        } else {
+            echo "Phương thức không tồn tại.";
+        }
     } else {
-        echo "Phương thức không tồn tại.";
+        if (method_exists($controller, $method)) {
+            $controller->$method();
+        } else {
+            echo "Phương thức không tồn tại.";
+        }
     }
 }
 ?>

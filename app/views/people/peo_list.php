@@ -1,6 +1,7 @@
 <?php require_once 'app/views/shares/header.php'; ?>
 
 <h2>Danh sách nhân viên</h2>
+<a href="index.php?url=People/add" class="btn btn-success mb-3">Thêm nhân viên</a>
 <table class="table table-bordered table-striped">
     <thead class="thead-light">
         <tr>
@@ -11,7 +12,7 @@
             <th>Nơi sinh</th>
             <th>Mã phòng</th>
             <th>Lương</th>
-        </tr>
+            <th>Action</th> </tr>
     </thead>
     <tbody>
         <?php if (!empty($nhanvien)): ?>
@@ -31,11 +32,18 @@
                     <td><?= $nv['Noi_Sinh'] ?></td>
                     <td><?= $nv['Ma_Phong'] ?></td>
                     <td><?= number_format($nv['Luong']) ?> VND</td>
+                    <td> <a href="index.php?controller=people&action=edit&id=<?= $nv['Ma_NV'] ?>" class="btn btn-sm btn-primary">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="index.php?url=People/edit/<?= $nv['Ma_NV'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
             <tr>
-                <td colspan="7" class="text-center">Không có dữ liệu</td>
+                <td colspan="8" class="text-center">Không có dữ liệu</td>
             </tr>
         <?php endif; ?>
     </tbody>

@@ -1,0 +1,104 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    display: flex; /* Sử dụng flexbox cho body để cố định footer */
+    flex-direction: column;
+    min-height: 100vh; /* Chiều cao tối thiểu là 100% viewport height */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+    flex: 1; /* Cho container chiếm phần còn lại của không gian */
+}
+
+/* Header */
+/* Header */
+header.bg-primary {
+    background-color: #28a745 !important; /* Màu xanh lá cây Bootstrap success */
+    padding: 20px 0; /* Tăng padding để header cao hơn */
+}
+header.bg-primary h1 {
+    margin: 0;
+    font-size: 2.5em; /* Tăng kích thước font */
+    font-weight: bold; /* In đậm tiêu đề */
+}
+
+/* Bảng Danh Sách Nhân Viên */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Icon Giới Tính */
+.gender-icon {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    margin: 0 auto; /* Thêm dòng này */
+}
+/* Icon Giới Tính (Điều chỉnh) */
+.table td:nth-child(4) { /* Chọn ô giới tính (cột thứ 4) */
+    text-align: center; /* Căn giữa theo chiều ngang */
+}
+/* Phân Trang */
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination .page-link {
+    color: #007bff;
+    border: 1px solid #ddd;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+/* Footer */
+footer.bg-dark {
+    background-color: #343a40 !important;
+    padding: 15px 0;
+    margin-top: auto; /* Đẩy footer xuống cuối trang */
+}
+
+footer.bg-dark p {
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .table th, .table td {
+        padding: 6px;
+        font-size: 0.9em;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+}
